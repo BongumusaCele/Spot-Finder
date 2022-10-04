@@ -28,6 +28,19 @@
         app:mt_placeholder="Search a landmark"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/landmarkbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="193dp"
+        android:backgroundTint="@color/redlight"
+        android:clickable="true"
+        android:foregroundTint="@color/redlight"
+        android:src="@drawable/ic_landmark" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionaddBTN"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

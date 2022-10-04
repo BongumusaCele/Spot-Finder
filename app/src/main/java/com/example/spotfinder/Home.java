@@ -34,7 +34,10 @@ public class Home extends AppCompatActivity {
     SupportMapFragment supportMapFragment;
     FusedLocationProviderClient client;
 
+    FloatingActionButton landmark;
     FloatingActionButton floatingActionButton;
+    GoogleMap map;
+    public double lat, lng;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,11 +48,34 @@ public class Home extends AppCompatActivity {
         supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.google_map);
 
         floatingActionButton = (FloatingActionButton) findViewById(R.id.floatingActionaddBTN);
+        landmark = (FloatingActionButton) findViewById(R.id.landmarkbtn);
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getCurrentLocation();
+            }
+        });
+
+        landmark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StringBuilder stringBuilder = new StringBuilder
+                        ("http://maps.googleapis.com/maps/api/place/nearbysearch/json?");
+                stringBuilder.append("location=" + lat + "" + lng);
+                stringBuilder.append("&radius=1000");
+                stringBuilder.append("&type=atm");
+                stringBuilder.append("&sensor=true");
+                stringBuilder.append("&key" + getResources().getString(R.string.google_maps_key));
+
+                String url = stringBuilder.toString();
+                Object dataFetch[]= new Object[2];
+
+                dataFetch[0] = map;
+                dataFetch[1] = url;
+
+                FetchData fetchData = new FetchData();
+                fetchData.execute(fetchData);
             }
         });
 
@@ -101,13 +127,16 @@ public class Home extends AppCompatActivity {
             @Override
             public void onSuccess(Location location) {
                 if(location != null){
+                    lat = location.getLatitude();
+                    lng = location.getLongitude();
                     supportMapFragment.getMapAsync(new OnMapReadyCallback() {
                         @Override
                         public void onMapReady(@NonNull GoogleMap googleMap) {
-                            LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+                            map = googleMap;
+                            LatLng latLng = new LatLng(lat, lng);
                             MarkerOptions options = new MarkerOptions().position(latLng).title("Your Location");
-                            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,10));
-                            googleMap.addMarker(options);
+                            map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,10));
+                            map.addMarker(options);
                         }
                     });
                 }
