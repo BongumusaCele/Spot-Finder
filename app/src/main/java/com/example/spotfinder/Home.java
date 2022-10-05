@@ -53,20 +53,23 @@ public class Home extends AppCompatActivity {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //get the current location
                 getCurrentLocation();
+
             }
         });
 
         landmark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 StringBuilder stringBuilder = new StringBuilder
-                        ("http://maps.googleapis.com/maps/api/place/nearbysearch/json?");
-                stringBuilder.append("location=" + lat + "" + lng);
-                stringBuilder.append("&radius=1000");
-                stringBuilder.append("&type=atm");
+                        ("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
+                stringBuilder.append("location=" + lat + "," + lng);
+                stringBuilder.append("&radius=800000");
+                stringBuilder.append("&type=historicallandmark");
                 stringBuilder.append("&sensor=true");
-                stringBuilder.append("&key" + getResources().getString(R.string.google_maps_key));
+                stringBuilder.append("&key=" + getResources().getString(R.string.google_maps_key));
 
                 String url = stringBuilder.toString();
                 Object dataFetch[]= new Object[2];
@@ -75,7 +78,7 @@ public class Home extends AppCompatActivity {
                 dataFetch[1] = url;
 
                 FetchData fetchData = new FetchData();
-                fetchData.execute(fetchData);
+                fetchData.execute(dataFetch);
             }
         });
 

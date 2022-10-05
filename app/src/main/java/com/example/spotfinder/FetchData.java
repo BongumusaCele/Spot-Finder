@@ -23,11 +23,9 @@ public class FetchData extends AsyncTask<Object,String,String> {
     protected void onPostExecute(String s) {
         try {
             JSONObject jsonObject = new JSONObject(s);
-            JSONArray jsonArray = new JSONArray();
+            JSONArray jsonArray = jsonObject.getJSONArray("results");
 
-            jsonArray = jsonObject.getJSONArray("results");
-
-            for (int i = 0; i > jsonArray.length(); i++){
+            for (int i = 0; i < jsonArray.length(); i++){
 
                 JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                 JSONObject getLocation = jsonObject1.getJSONObject("geometry").getJSONObject("location");

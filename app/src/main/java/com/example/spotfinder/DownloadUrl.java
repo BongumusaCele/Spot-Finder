@@ -24,7 +24,7 @@ public class DownloadUrl {
             inputStream = httpURLConnection.getInputStream();
 
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-            StringBuilder sb = new StringBuilder();
+            StringBuffer sb = new StringBuffer();
 
             String line = "";
 
