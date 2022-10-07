@@ -11,6 +11,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -34,9 +35,9 @@ public class Home extends AppCompatActivity {
     SupportMapFragment supportMapFragment;
     FusedLocationProviderClient client;
 
-    FloatingActionButton landmark;
     FloatingActionButton floatingActionButton;
     GoogleMap map;
+    Button food, parks, statues, graffiti, hotel, resorts, shops;
     public double lat, lng;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,27 +48,24 @@ public class Home extends AppCompatActivity {
 
         supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.google_map);
 
+        food = findViewById(R.id.btn_food);
+        parks = findViewById(R.id.btn_parks);
+        statues = findViewById(R.id.btn_statues);
+        graffiti = findViewById(R.id.btn_graffiti);
+        hotel = findViewById(R.id.btn_hotel);
+        resorts = findViewById(R.id.btn_resorts);
+        shops = findViewById(R.id.btn_shop);
+
         floatingActionButton = (FloatingActionButton) findViewById(R.id.floatingActionaddBTN);
-        landmark = (FloatingActionButton) findViewById(R.id.landmarkbtn);
 
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+        food.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //get the current location
-                getCurrentLocation();
-
-            }
-        });
-
-        landmark.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
                 StringBuilder stringBuilder = new StringBuilder
                         ("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
                 stringBuilder.append("location=" + lat + "," + lng);
                 stringBuilder.append("&radius=800000");
-                stringBuilder.append("&type=historicallandmark");
+                stringBuilder.append("&type=restaurants");
                 stringBuilder.append("&sensor=true");
                 stringBuilder.append("&key=" + getResources().getString(R.string.google_maps_key));
 
@@ -79,6 +77,147 @@ public class Home extends AppCompatActivity {
 
                 FetchData fetchData = new FetchData();
                 fetchData.execute(dataFetch);
+            }
+        });
+
+        parks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StringBuilder stringBuilder = new StringBuilder
+                        ("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
+                stringBuilder.append("location=" + lat + "," + lng);
+                stringBuilder.append("&radius=800000");
+                stringBuilder.append("&type=parks");
+                stringBuilder.append("&sensor=true");
+                stringBuilder.append("&key=" + getResources().getString(R.string.google_maps_key));
+
+                String url = stringBuilder.toString();
+                Object dataFetch[]= new Object[2];
+
+                dataFetch[0] = map;
+                dataFetch[1] = url;
+
+                FetchData fetchData = new FetchData();
+                fetchData.execute(dataFetch);
+            }
+        });
+
+        statues.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StringBuilder stringBuilder = new StringBuilder
+                        ("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
+                stringBuilder.append("location=" + lat + "," + lng);
+                stringBuilder.append("&radius=800000");
+                stringBuilder.append("&type=statues");
+                stringBuilder.append("&sensor=true");
+                stringBuilder.append("&key=" + getResources().getString(R.string.google_maps_key));
+
+                String url = stringBuilder.toString();
+                Object dataFetch[]= new Object[2];
+
+                dataFetch[0] = map;
+                dataFetch[1] = url;
+
+                FetchData fetchData = new FetchData();
+                fetchData.execute(dataFetch);
+            }
+        });
+
+        graffiti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StringBuilder stringBuilder = new StringBuilder
+                        ("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
+                stringBuilder.append("location=" + lat + "," + lng);
+                stringBuilder.append("&radius=800000");
+                stringBuilder.append("&type=graffiti");
+                stringBuilder.append("&sensor=true");
+                stringBuilder.append("&key=" + getResources().getString(R.string.google_maps_key));
+
+                String url = stringBuilder.toString();
+                Object dataFetch[]= new Object[2];
+
+                dataFetch[0] = map;
+                dataFetch[1] = url;
+
+                FetchData fetchData = new FetchData();
+                fetchData.execute(dataFetch);
+            }
+        });
+
+        hotel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StringBuilder stringBuilder = new StringBuilder
+                        ("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
+                stringBuilder.append("location=" + lat + "," + lng);
+                stringBuilder.append("&radius=800000");
+                stringBuilder.append("&type=hotels");
+                stringBuilder.append("&sensor=true");
+                stringBuilder.append("&key=" + getResources().getString(R.string.google_maps_key));
+
+                String url = stringBuilder.toString();
+                Object dataFetch[]= new Object[2];
+
+                dataFetch[0] = map;
+                dataFetch[1] = url;
+
+                FetchData fetchData = new FetchData();
+                fetchData.execute(dataFetch);
+            }
+        });
+
+        resorts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StringBuilder stringBuilder = new StringBuilder
+                        ("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
+                stringBuilder.append("location=" + lat + "," + lng);
+                stringBuilder.append("&radius=800000");
+                stringBuilder.append("&type=resorts");
+                stringBuilder.append("&sensor=true");
+                stringBuilder.append("&key=" + getResources().getString(R.string.google_maps_key));
+
+                String url = stringBuilder.toString();
+                Object dataFetch[]= new Object[2];
+
+                dataFetch[0] = map;
+                dataFetch[1] = url;
+
+                FetchData fetchData = new FetchData();
+                fetchData.execute(dataFetch);
+            }
+        });
+
+        shops.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StringBuilder stringBuilder = new StringBuilder
+                        ("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
+                stringBuilder.append("location=" + lat + "," + lng);
+                stringBuilder.append("&radius=800000");
+                stringBuilder.append("&type=shops");
+                stringBuilder.append("&sensor=true");
+                stringBuilder.append("&key=" + getResources().getString(R.string.google_maps_key));
+
+                String url = stringBuilder.toString();
+                Object dataFetch[]= new Object[2];
+
+                dataFetch[0] = map;
+                dataFetch[1] = url;
+
+                FetchData fetchData = new FetchData();
+                fetchData.execute(dataFetch);
+            }
+        });
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //get the current location
+                getCurrentLocation();
+
             }
         });
 

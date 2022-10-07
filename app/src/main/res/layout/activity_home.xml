@@ -27,18 +27,110 @@
         android:outlineProvider="bounds"
         app:mt_placeholder="Search a landmark"/>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/landmarkbtn"
+    <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="193dp"
-        android:backgroundTint="@color/redlight"
-        android:clickable="true"
-        android:foregroundTint="@color/redlight"
-        android:src="@drawable/ic_landmark" />
+        android:layout_height="59dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginBottom="75dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_food"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/button_shape_three"
+                android:backgroundTint="@null"
+                android:drawableLeft="@drawable/ic_restaurant"
+                android:text="food"
+                android:textColor="@color/red"
+                app:backgroundTint="@null"
+                android:layout_marginBottom="20dp"/>
+
+            <Button
+                android:id="@+id/btn_parks"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/button_shape_three"
+                android:backgroundTint="@null"
+                android:drawableLeft="@drawable/ic_grass"
+                android:text="parks"
+                android:textColor="@color/red"
+                app:backgroundTint="@null"
+                android:layout_marginBottom="20dp" />
+
+            <Button
+                android:id="@+id/btn_statues"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/button_shape_three"
+                android:backgroundTint="@null"
+                android:drawableLeft="@drawable/ic_statues"
+                android:text="statues"
+                android:textColor="@color/red"
+                app:backgroundTint="@null"
+                android:layout_marginBottom="20dp" />
+
+            <Button
+                android:id="@+id/btn_graffiti"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/button_shape_three"
+                android:backgroundTint="@null"
+                android:drawableLeft="@drawable/ic_graffiti"
+                android:text="graffiti"
+                android:textColor="@color/red"
+                app:backgroundTint="@null"
+                android:layout_marginBottom="20dp" />
+
+            <Button
+                android:id="@+id/btn_hotel"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/button_shape_three"
+                android:backgroundTint="@null"
+                android:drawableLeft="@drawable/ic_hotel"
+                android:text="hotel"
+                android:textColor="@color/red"
+                app:backgroundTint="@null"
+                android:layout_marginBottom="20dp"/>
+
+            <Button
+                android:id="@+id/btn_resorts"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/button_shape_three"
+                android:backgroundTint="@null"
+                android:drawableLeft="@drawable/ic_resorts"
+                android:text="resorts"
+                android:textColor="@color/red"
+                app:backgroundTint="@null"
+                android:layout_marginBottom="20dp" />
+
+            <Button
+                android:id="@+id/btn_shop"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/button_shape_three"
+                android:backgroundTint="@null"
+                android:drawableLeft="@drawable/ic_shops"
+                android:text="shops"
+                android:textColor="@color/red"
+                app:backgroundTint="@null"
+                android:layout_marginBottom="20dp"  />
+
+        </LinearLayout>
+    </HorizontalScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionaddBTN"
@@ -50,8 +142,7 @@
         android:layout_marginBottom="106dp"
         android:backgroundTint="@color/redlight"
         android:clickable="true"
-        android:foregroundTint="@color/redlight"
-        android:src="@drawable/ic_my_location" />
+        android:src="@drawable/ic_my_location"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/NavigationView"
@@ -65,6 +156,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu">
+
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </RelativeLayout>
