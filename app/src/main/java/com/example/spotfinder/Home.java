@@ -35,7 +35,7 @@ public class Home extends AppCompatActivity {
     SupportMapFragment supportMapFragment;
     FusedLocationProviderClient client;
 
-    FloatingActionButton floatingActionButton;
+    FloatingActionButton floatingActionButton, direct;
     GoogleMap map;
     Button food, parks, statues, graffiti, hotel, resorts, shops;
     public double lat, lng;
@@ -57,6 +57,7 @@ public class Home extends AppCompatActivity {
         shops = findViewById(R.id.btn_shop);
 
         floatingActionButton = (FloatingActionButton) findViewById(R.id.floatingActionaddBTN);
+        direct = (FloatingActionButton) findViewById(R.id.directbtn);
 
         food.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -218,6 +219,14 @@ public class Home extends AppCompatActivity {
                 //get the current location
                 getCurrentLocation();
 
+            }
+        });
+
+        direct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent direction = new Intent(Home.this, Directions.class);
+                startActivity(direction);
             }
         });
 

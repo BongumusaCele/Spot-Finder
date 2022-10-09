@@ -20,6 +20,9 @@
         android:theme="@style/Theme.SpotFinder"
         tools:targetApi="31">
         <activity
+            android:name=".Directions"
+            android:exported="false" />
+        <activity
             android:name=".Settings"
             android:exported="false" />
         <activity
