@@ -7,14 +7,39 @@
     tools:context=".Settings">
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/txtSettingsHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Settings Page"
+        android:text="Settings"
+        android:textColor="#F44336"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.089"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.022" />
+
+    <Switch
+        android:id="@+id/switch2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Kilometres/Miles"
+        android:textColor="#F44336"
+        android:textOff="MILES"
+        android:textOn="KM"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/txtSettingsHeader"
+        app:layout_constraintTop_toBottomOf="@+id/txtSettingsHeader" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycle_view"
+        android:layout_width="319dp"
+        android:layout_height="398dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/NavigationView2"
@@ -27,7 +52,20 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu">
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+        app:menu="@menu/bottom_nav_menu"></com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="Favourite LandMarks"
+        android:textColor="#F44336"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/switch2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/switch2"
+        app:layout_constraintTop_toBottomOf="@+id/switch2" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

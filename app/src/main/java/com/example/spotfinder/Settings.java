@@ -1,21 +1,38 @@
 package com.example.spotfinder;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.util.ArrayList;
+
 public class Settings extends AppCompatActivity {
+
+RecyclerView rv;
+private ArrayList<FavouriteLandmarks>landmarkList;
 
     BottomNavigationView bottomnavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        rv = findViewById(R.id.recycle_view);
+        landmarkList = new ArrayList<>();
+
+
+        setLandmarkList();
+        setAdapter();
+
+
 
         bottomnavigationView = findViewById(R.id.NavigationView2);
 
@@ -42,5 +59,19 @@ public class Settings extends AppCompatActivity {
                 return false;
             }
         });
+    }
+    private void setAdapter(){
+        RecyclerAdapter adapter = new RecyclerAdapter(landmarkList);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        rv.setLayoutManager(layoutManager);
+        rv.setItemAnimator(new DefaultItemAnimator());
+        rv.setAdapter(adapter);
+    }
+
+    public void setLandmarkList(){
+        landmarkList.add(new FavouriteLandmarks("Joburg Theatre"));
+        landmarkList.add(new FavouriteLandmarks("Museum Africa"));
+        landmarkList.add(new FavouriteLandmarks("Constitutional Hill Human Rights Precinct Hall"));
+
     }
 }
