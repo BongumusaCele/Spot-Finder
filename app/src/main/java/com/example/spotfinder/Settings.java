@@ -3,6 +3,8 @@ package com.example.spotfinder;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -11,13 +13,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 
 public class Settings extends AppCompatActivity {
-
-RecyclerView rv;
-private ArrayList<FavouriteLandmarks>landmarkList;
+    private FirebaseAuth mFirebaseAuth;
+    Button logoutBtn;
+    RecyclerView rv;
+    private ArrayList<FavouriteLandmarks>landmarkList;
 
     BottomNavigationView bottomnavigationView;
     @Override
@@ -25,6 +30,7 @@ private ArrayList<FavouriteLandmarks>landmarkList;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        mFirebaseAuth = FirebaseAuth.getInstance();
         rv = findViewById(R.id.recycle_view);
         landmarkList = new ArrayList<>();
 
@@ -60,6 +66,9 @@ private ArrayList<FavouriteLandmarks>landmarkList;
             }
         });
     }
+
+
+
     private void setAdapter(){
         RecyclerAdapter adapter = new RecyclerAdapter(landmarkList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
@@ -74,4 +83,6 @@ private ArrayList<FavouriteLandmarks>landmarkList;
         landmarkList.add(new FavouriteLandmarks("Constitutional Hill Human Rights Precinct Hall"));
 
     }
+
+
 }

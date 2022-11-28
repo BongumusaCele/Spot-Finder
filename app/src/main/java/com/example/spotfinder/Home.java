@@ -31,11 +31,12 @@ import com.google.android.material.navigation.NavigationView;
 
 public class Home extends AppCompatActivity {
 
+
     BottomNavigationView bottomnavigationView;
     SupportMapFragment supportMapFragment;
     FusedLocationProviderClient client;
 
-    FloatingActionButton floatingActionButton, direct;
+    FloatingActionButton floatingActionButton, direct, streetview;
     GoogleMap map;
     Button food, parks, statues, graffiti, hotel, resorts, shops;
     public double lat, lng;
@@ -58,13 +59,14 @@ public class Home extends AppCompatActivity {
 
         floatingActionButton = (FloatingActionButton) findViewById(R.id.floatingActionaddBTN);
         direct = (FloatingActionButton) findViewById(R.id.directbtn);
+        streetview = (FloatingActionButton) findViewById(R.id.btn_streetview);
 
         food.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 StringBuilder stringBuilder = new StringBuilder
                         ("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
-                stringBuilder.append("location=" + lat + "," + lng);
+                stringBuilder.append("location=" + (-26.1925666) + "," + (28.0316998));
                 stringBuilder.append("&radius=800000");
                 stringBuilder.append("&type=restaurants");
                 stringBuilder.append("&sensor=true");
@@ -86,8 +88,8 @@ public class Home extends AppCompatActivity {
             public void onClick(View v) {
                 StringBuilder stringBuilder = new StringBuilder
                         ("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
-                stringBuilder.append("location=" + lat + "," + lng);
-                stringBuilder.append("&radius=800000");
+                stringBuilder.append("location=" + (-26.1925666) + "," + (28.0316998));
+                stringBuilder.append("&radius=1000");
                 stringBuilder.append("&type=parks");
                 stringBuilder.append("&sensor=true");
                 stringBuilder.append("&key=" + getResources().getString(R.string.google_maps_key));
@@ -108,8 +110,8 @@ public class Home extends AppCompatActivity {
             public void onClick(View v) {
                 StringBuilder stringBuilder = new StringBuilder
                         ("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
-                stringBuilder.append("location=" + lat + "," + lng);
-                stringBuilder.append("&radius=800000");
+                stringBuilder.append("location=" + (-26.1925666) + "," + (28.0316998));
+                stringBuilder.append("&radius=1000");
                 stringBuilder.append("&type=statues");
                 stringBuilder.append("&sensor=true");
                 stringBuilder.append("&key=" + getResources().getString(R.string.google_maps_key));
@@ -130,8 +132,8 @@ public class Home extends AppCompatActivity {
             public void onClick(View v) {
                 StringBuilder stringBuilder = new StringBuilder
                         ("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
-                stringBuilder.append("location=" + lat + "," + lng);
-                stringBuilder.append("&radius=800000");
+                stringBuilder.append("location=" + (-26.1925666) + "," + (28.0316998));
+                stringBuilder.append("&radius=1000");
                 stringBuilder.append("&type=graffiti");
                 stringBuilder.append("&sensor=true");
                 stringBuilder.append("&key=" + getResources().getString(R.string.google_maps_key));
@@ -152,8 +154,8 @@ public class Home extends AppCompatActivity {
             public void onClick(View v) {
                 StringBuilder stringBuilder = new StringBuilder
                         ("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
-                stringBuilder.append("location=" + lat + "," + lng);
-                stringBuilder.append("&radius=800000");
+                stringBuilder.append("location=" + (-26.1925666) + "," + (28.0316998));
+                stringBuilder.append("&radius=1000");
                 stringBuilder.append("&type=hotels");
                 stringBuilder.append("&sensor=true");
                 stringBuilder.append("&key=" + getResources().getString(R.string.google_maps_key));
@@ -174,8 +176,8 @@ public class Home extends AppCompatActivity {
             public void onClick(View v) {
                 StringBuilder stringBuilder = new StringBuilder
                         ("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
-                stringBuilder.append("location=" + lat + "," + lng);
-                stringBuilder.append("&radius=800000");
+                stringBuilder.append("location=" + (-26.1925666) + "," + (28.0316998));
+                stringBuilder.append("&radius=1000");
                 stringBuilder.append("&type=resorts");
                 stringBuilder.append("&sensor=true");
                 stringBuilder.append("&key=" + getResources().getString(R.string.google_maps_key));
@@ -196,8 +198,8 @@ public class Home extends AppCompatActivity {
             public void onClick(View v) {
                 StringBuilder stringBuilder = new StringBuilder
                         ("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
-                stringBuilder.append("location=" + lat + "," + lng);
-                stringBuilder.append("&radius=800000");
+                stringBuilder.append("location=" + (-26.1925666) + "," + (28.0316998));
+                stringBuilder.append("&radius=1000");
                 stringBuilder.append("&type=shops");
                 stringBuilder.append("&sensor=true");
                 stringBuilder.append("&key=" + getResources().getString(R.string.google_maps_key));
@@ -254,6 +256,14 @@ public class Home extends AppCompatActivity {
             }
         });
 
+        streetview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent street = new Intent(Home.this, StreetView.class);
+                startActivity(street);
+            }
+        });
+
         //initialize the fuse location
         client = LocationServices.getFusedLocationProviderClient(this);
 
@@ -284,7 +294,7 @@ public class Home extends AppCompatActivity {
                         @Override
                         public void onMapReady(@NonNull GoogleMap googleMap) {
                             map = googleMap;
-                            LatLng latLng = new LatLng(lat, lng);
+                            LatLng latLng = new LatLng(-26.1925666,28.0316998);
                             MarkerOptions options = new MarkerOptions().position(latLng).title("Your Location");
                             map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,10));
                             map.addMarker(options);
