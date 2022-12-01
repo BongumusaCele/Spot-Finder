@@ -37,5 +37,16 @@
         android:textSize="20dp"
         android:textColor="@color/white"
         app:backgroundTint="@null" />
+    <Button
+        android:id="@+id/savelocationsbtn"
+        android:layout_width="220dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/button_shape_one"
+        android:backgroundTint="@null"
+        android:text="Save Location"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        app:backgroundTint="@null" />
 
 </LinearLayout>
